@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Astralwiz Quiz</title>
+</head>
+
+<body>
+
+    <header></header>
+    <h1> Head in the Stars!</h1>
+    <main>
+        <div>
+            <h3>Quick! Test your knowledge!</h3>
+            <p>
+                1. Timer will start counting down when you press start! <br>
+                2. Each question answered wrong will take off 3 seconds! <br>
+                <button id="start" class="btn btn-primary">Start!</button>
+            </p>
+        </div>
+        <!-- Quiz questions and options will go here -->
+        <div id="timer"><span id="countdown">120</span> seconds</div>
+
+        <div class="mb-3">
+            <h4>Question 1:<br>Houses represent the rotation of the earth around its axis over the course of</h4>
+            <ul class="btn-group">
+                <div>
+                    <input type="radio" id="option1" name="question1" value="0">
+                    <label for="option1" class="btn btn-secondary">1 year</label>
+                </div>
+                <div>
+                    <input type="radio" id="option2" name="question1" value="5">
+                    <label for="option2" class="btn btn-secondary">24 hours</label>
+                </div>
+                <div>
+                    <input type="radio" id="option3" name="question1" value="0">
+                    <label for="option3" class="btn btn-secondary">12 hours</label>
+                </div>
+                <input type="radio" id="option4" name="question1" value="0">
+                <label for="option4" class="btn btn-secondary">1 day</label>
+        </div>
+        </ul>
+        <button class="btn btn-primary" onclick="checkAnswer()">submit</button>
+        </div>
+        <div id="points">Points:<span id="score">0</span></div>
+        </div>
+
+    </main>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
+
+<!-- <div class="mb-3">
+    <h4>Question 1:Houses represent the rotation of the earth around its axis over the course of</h4>
+    <div class="btn-group">
+        <button class="btn btn-secondary">Option 1</button>
+        <button class="btn btn-secondary">Option 2</button>
+        <button class="btn btn-secondary">Option 3</button>
+        <button class="btn btn-secondary">Option 4</button>
+    </div> -->
