@@ -11,39 +11,44 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<body>
+<body class="background">
 
     <header>
-        <h1> Head in the Stars!</h1>
+        <h1 class="title"> Head in the Stars!</h1>
     </header>
-
+    <br>
     <main>
-        <h3>Instructions</h3>
-        <p> 1. Timer will start counting down when you press start!<br>
+        <h3 class="instructions">Instructions</h3> <br>
+        <p class="paragraph"> 1. Timer will start counting down when you press start!<br>
             2. Each question answered correctly will add 10 points! <br>
-            3. Each question answered incorrectly will take off 10 seconds of remaining time!</p>
-        <br>
+            3. Each question answered incorrectly will take off 20 seconds of remaining time!</p>
 
-        <button id="start" class="btn btn-primary">Start!</button>
+        <button id="start" class="btn btn-info">Start!</button>
         <!-- Timer -->
-        <div id="timer"><span id="countdown">120</span> seconds</div>
+        <div id="timer" class="clock"><span id="countdown">120</span> seconds</div>
 
         <!-- Quiz questions and options-->
-        <div id='question' class=mb-3></div>
-        <div id="options" class="mb-3"></div>
+        <div class="container1">
+            <div id='question' class="mb-3"></div>
+            <div id="options" class="mb-3"></div>
+        </div>
 
-        <button type="submit" class="btn btn-primary" id="submitAnswer">submit answer</button>
-        <div id="points">Points:<span id="score">0</span></div>
-       
+            <button type="submit" class="btn btn-info" id="submitAnswer">submit answer</button>
+            
+            <div id="points">Points:<span id="score">0</span></div>
+
     </main>
+    <section class="container">
+        <table id="scoresTable" class=" table table-bordered">
 
-    <table id="scoresTable">
-        <!-- scores added here -->
-    </table>
+            <!-- scores added here -->
+        </table><br>
+        <br>
+    </section>
 
 
     <footer>
-        </footer>
+    </footer>
 
     <!-- Javascript files -->
     <script src="./assets/quiz.js"></script>

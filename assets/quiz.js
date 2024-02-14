@@ -109,6 +109,8 @@ document.getElementById('submitAnswer').addEventListener('click', function () {
     checkAnswer();
 });
 
+let quizEnded=false;
+
 //function to check answers and update points and timer
 function checkAnswer() {
     const selectedAnswer = document.querySelector('input[name="options"]:checked');
@@ -118,6 +120,7 @@ function checkAnswer() {
         if (answer === currentQuestion.correctAnswer) {
             score += 10; //correct answer adds points 
         } else {
+            score -= 10; //takes off 10 points
             timeLeft -= 5; //Incorrect answer deducts time
             if (timeLeft < 0) {
                 timeLeft = 0
@@ -139,12 +142,20 @@ function checkAnswer() {
 //function to handle the end of the quiz
 function endQuiz() {
     alert("time's UP! Your final score is " + score);
+    //reset timer
+    timeLeft = 0;
     //save score option
     saveScore();
+
+
 }
 
 
 function saveScore() {
+    if (quizEnded) {
+        return; //don't prompt for initials if the quiz already ended
+    }
+
     const initials = prompt("Enter your initials to save your score:");
     if (initials) {
         //retrieve score from local storage
@@ -157,7 +168,8 @@ function saveScore() {
         //Save scores back to storage
         localStorage.setItem('quizScores', JSON.stringify(savedScores));
         console.log(initials, score);
-        alert("Your score has been saved!")
+        alert("Your score has been saved, refresh the page to see your score!");
+        quizEnded = true; // set flag to true to stop quiz prompts for saving score
     }
 }
 function displayScores() {
@@ -165,15 +177,17 @@ function displayScores() {
     const scoresTable = document.getElementById('scoresTable');
 
     //clear previous scores
-    scoresTable.innerHTML = '';
+    // scoresTable.innerHTML = '';
 
     //create table header
     const headerRow = document.createElement('tr');
     const headerInitials = document.createElement('th');
-    headerScore.textContent = ' score';
+    headerInitials.textContent = ' initials';
+    const headerScore = document.createElement('th')
+    headerScore.textContent = 'score';
     headerRow.appendChild(headerInitials);
     headerRow.appendChild(headerScore);
-    headerRow.appendChild(headerRow);
+    scoresTable.appendChild(headerRow);
 
     //populate table with scores
     if (savedScores) {
@@ -188,7 +202,7 @@ function displayScores() {
             scoresTable.appendChild(row);
 
         });
-    } else { 
+    } else {
         //before scores
         const noScoresRow = document.createElement('tr');
         const noScoresCell = document.createElement('td');
@@ -199,6 +213,6 @@ function displayScores() {
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     displayScores();
 };

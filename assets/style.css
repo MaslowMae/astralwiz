@@ -1,0 +1,49 @@
+.title {
+    font-family: serif;
+    color: aqua;
+}
+
+
+body {
+    font-family: fantasy;
+    background-color:dimgray;
+    color: aqua;
+}
+
+.btn {
+    font-style: bold;
+    margin-top: 20px;
+}
+
+.table {
+    border-color: rgb(4, 4, 105);
+    border-top-width: 1ch;
+    border-radius: 25%;
+
+}
+.container1 {
+    color:color(from aqua srgb 4 4 105);
+    border:5px dotted silver;
+    padding: 5%;
+    max-width: 70%;
+    margin-left: 50px;
+
+}
+
+#points {
+    color: lightpink;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+}
+
+.clock {
+    font-size: 36px;
+    color: lightyellow;
+    margin-top: 20px;
+}
+
+.container {
+    border: 2px solid lightpink;
+
+}
