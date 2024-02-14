@@ -5,7 +5,7 @@
 
 
 body {
-    font-family: fantasy;
+    font-family: serif;
     background-color:dimgray;
     color: aqua;
 }
@@ -31,6 +31,7 @@ body {
 }
 
 #points {
+    font-family: fantasy;
     color: lightpink;
     font-size: 26px;
     display: flex;
@@ -38,6 +39,7 @@ body {
 }
 
 .clock {
+    font-family: fantasy;
     font-size: 36px;
     color: lightyellow;
     margin-top: 20px;
