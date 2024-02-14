@@ -45,9 +45,8 @@ const questions = [
         options: ["how others see you", "your higher self", "your true potential", "your core personality and sense of self"],
         correctAnswer: "your core personality and sense of self"
     },
-
-
 ];
+
 
 //countdown function
 function countdown() {
@@ -72,7 +71,7 @@ document.getElementById('start').addEventListener('click', function () {
 function displayQuestion() {
     const questionContainer = document.getElementById('question');
     const currentQuestion = questions[currentQuestionIndex];
-  
+
     //clear the question container before appending new elements
     questionContainer.innerHTML = '';
 
@@ -84,11 +83,20 @@ function displayQuestion() {
     questionContainer.appendChild(questionText);
 
     //create options element
-    const optionsList=document.createElement('ul')
-    
+    const optionsList = document.createElement('ul')
+
     currentQuestion.options.forEach(option => {
         const listItem = document.createElement('li');
-        listItem.textContent=option;
+        const optionInput = document.createElement('input');
+        optionInput.type = 'radio';
+        optionInput.name = 'options';
+        optionInput.value = option;
+        optionInput.id = option;
+        const optionLabel = document.createElement('label');
+        optionLabel.textContent = option;
+        optionLabel.htmlFor = option;
+        listItem.appendChild(optionInput);
+        listItem.appendChild(optionLabel);
         optionsList.appendChild(listItem);
     });
 
@@ -99,31 +107,98 @@ function displayQuestion() {
 //Event listener for submit button
 document.getElementById('submitAnswer').addEventListener('click', function () {
     checkAnswer();
-    currentQuestionIndex++; //move to the next question in the index
-    displayQuestion();//display next question
 });
 
 //function to check answers and update points and timer
 function checkAnswer() {
-    const selectedAnswer = document.querySelector('input[name="question1"]:checked');
+    const selectedAnswer = document.querySelector('input[name="options"]:checked');
     if (selectedAnswer) {
         const answer = selectedAnswer.value;
-        if (answer === "5") {
-            score += 10; //correct answer adds points
+        const currentQuestion = questions[currentQuestionIndex];
+        if (answer === currentQuestion.correctAnswer) {
+            score += 10; //correct answer adds points 
         } else {
-            timeLeft -= 10; //Incorrect answer deducts time
+            timeLeft -= 5; //Incorrect answer deducts time
             if (timeLeft < 0) {
                 timeLeft = 0
                 endQuiz(); //ensure time doesn't go negative
             }
         }
         document.getElementById('score').textContent = score;
+        currentQuestionIndex++; //move to the next question in the index
+        if (currentQuestionIndex < questions.length) {
+            displayQuestion();
+
+        } else {
+            endQuiz(); //End quiz if all questions are answered
+        }
+
     }
+
 }
 //function to handle the end of the quiz
 function endQuiz() {
     alert("time's UP! Your final score is " + score);
-    //submit score - add later
+    //save score option
+    saveScore();
+}
+
+
+function saveScore() {
+    const initials = prompt("Enter your initials to save your score:");
+    if (initials) {
+        //retrieve score from local storage
+        var savedScores = JSON.parse(localStorage.getItem('quizScores'));
+        if (!savedScores) {
+            savedScores = [];
+        }
+        //add current svore
+        savedScores.push({ initials, score: score });
+        //Save scores back to storage
+        localStorage.setItem('quizScores', JSON.stringify(savedScores));
+        console.log(initials, score);
+        alert("Your score has been saved!")
+    }
+}
+function displayScores() {
+    const savedScores = JSON.parse(localStorage.getItem('quizScores'));
+    const scoresTable = document.getElementById('scoresTable');
+
+    //clear previous scores
+    scoresTable.innerHTML = '';
+
+    //create table header
+    const headerRow = document.createElement('tr');
+    const headerInitials = document.createElement('th');
+    headerScore.textContent = ' score';
+    headerRow.appendChild(headerInitials);
+    headerRow.appendChild(headerScore);
+    headerRow.appendChild(headerRow);
+
+    //populate table with scores
+    if (savedScores) {
+        savedScores.forEach(score => {
+            const row = document.createElement("tr");
+            const cellInitials = document.createElement('td');
+            cellInitials.textContent = score.initials;
+            const cellScore = document.createElement('td');
+            cellScore.textContent = score.score;
+            row.appendChild(cellInitials);
+            row.appendChild(cellScore);
+            scoresTable.appendChild(row);
+
+        });
+    } else { 
+        //before scores
+        const noScoresRow = document.createElement('tr');
+        const noScoresCell = document.createElement('td');
+        noScoresCell.textContent = 'No scores saved yet :('
+        noScoresCell.setAttribute('colspan', 2);
+        noScoresRow.appendChild(noScoresCell);
+        scoresTable.appendChild(noScoresRow);
+    }
+}
+
+window.onload = function() {
+    displayScores();
 };
-
-
