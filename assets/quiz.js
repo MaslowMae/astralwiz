@@ -11,18 +11,18 @@ const questions = [
         correctAnswer: "the energy to harness for full potential"
     },
     {
-        questionText: "Astrological houses represent the rotation of the earth around it's axis over the course of how long?",
+        questionText: "Astrological houses represent the rotation of the earth around it's axis, over the course of how long?",
         options: ["1 year", "24 hours", "12 hours", "1 day"],
         correctAnswer: "24 hours"
     },
     {
-        questionText: "Which houses are the Cardinal Houses hint: Ascendant, Midhaven, Imum Coeli and Descendent",
+        questionText: "Which number houses are the Cardinal Houses? hint: Ascendant, Midhaven, Imum Coeli and Descendent",
         options: ["1st, 3rd, 6th, 12th", "2nd, 4th, 6th, 8th", "1st, 4th, 7th, 10th", "1st, 3rd, 7th, 11th"],
         correctAnswer: "1st, 4th, 7th, 10th"
     },
     {
         questionText: "what degrees do cusps fall under? hint: Sun only and last three days",
-        options: ["27,28,29", "28,29,0,1", "29,0,1", "20,29,10"],
+        options: ["27,28,29", "28,29,0", "29,0,1", "20,29,10"],
         correctAnswer: "27,28,29"
     },
     {
@@ -43,7 +43,7 @@ const questions = [
     {
         questionText: "What does your rising sign(ascendent) represent?",
         options: ["how others see you", "your higher self", "your true potential", "your core personality and sense of self"],
-        correctAnswer: "your core personality and sense of self"
+        correctAnswer: "how others see you"
     },
 ];
 
