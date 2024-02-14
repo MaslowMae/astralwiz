@@ -27,8 +27,8 @@ const questions = [
     },
     {
         questionText: "what is a Grand Trine?",
-        options: ["when three of the same element aspect eachother", "three planets in trine to eachother, three trines", "a planet in each element", "any triangle in your chart"],
-        correctAnswer: "three planets in trine to eachother, three trines"
+        options: ["three of the same elements aspect eachother", "three planets in trine to eachother", "a planet in each element", "any triangle in your chart"],
+        correctAnswer: "three planets in trine to eachother"
     },
     {
         questionText: "What does your sun sign represent?",
@@ -37,8 +37,8 @@ const questions = [
     },
     {
         questionText: "What does your south node represent?",
-        options: ["what you need to work on or pay attention to", "your past life or where you are coming from", "your biggest downfall", "what you burry deep down"],
-        correctAnswer: "your past life or where you are coming from"
+        options: ["what you need to work on or pay attention to", "your past life, where you are coming from", "your biggest downfall", "what you burry deep down"],
+        correctAnswer: "your past life, where you are coming from"
     },
     {
         questionText: "What does your rising sign(ascendent) represent?",
