@@ -7,7 +7,7 @@ var currentQuestionIndex = 0;
 const questions = [
     {
         questionText: "what does your north node represent in astrology?",
-        options: ["what you are really good at", "your twin flame", "the energy to harness for full potential", "where you'll end up"],
+        options: ["what you are really good at", "your twin flame", "the energy to harness for full potential", "where you'll end up no matter what"],
         correctAnswer: "the energy to harness for full potential"
     },
     {
